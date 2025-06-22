@@ -1,0 +1,38 @@
+# Week 3 – Advanced Security Implementation
+
+## 📌 Overview
+
+This week focused on advanced security hardening and monitoring. Key efforts included verifying secure service configurations, implementing centralized logging, and confirming a reduced attack surface post-fixes from Week 1 and 2.
+
+---
+
+## ✅ Tasks Completed
+
+- Verified service isolation and port exposure using `nmap`
+- Enabled MongoDB authentication and restricted access to localhost
+- Ensured Node.js service is firewalled and free of known vulnerabilities
+- Implemented security logging using `winston`
+  - Captures failed login attempts, suspicious requests, and service events
+- Assessed system posture to confirm minimized exposure
+
+---
+
+## 🔐 Key Security Achievements
+
+- MongoDB access restricted and secured
+- Node.js service verified clean
+- Logging operational and filtering critical events
+- No critical issues detected via scan
+
+---
+
+## 🛠 Tools & Tech Used
+
+- `nmap` for network scanning
+- `winston` for structured security logs
+- Node.js, Express.js, MongoDB (existing stack)
+
+---
+
+## 📁 Project Structure (Updated)
+
