@@ -1,0 +1,62 @@
+# Web Application Security Assessment - Week 1
+
+## 🧪 Project Overview
+
+This repository contains the results and artifacts from a Week 1 security assessment of the `AdminPanelSystem` — a Node.js and MongoDB-based web application. The project is focused on identifying security strengths and vulnerabilities through manual analysis and automated scanning using OWASP ZAP.
+
+---
+
+## 🔍 Target Environment
+
+- **Application:** AdminPanelSystem
+- **Technology Stack:** Node.js + MongoDB
+- **Environment:** `http://localhost:3001`
+- **Assessment Type:** Manual + Automated (OWASP ZAP)
+- **Analyst:** Abdullah Shahid (DHC ID: 3617)
+
+---
+
+## ✅ Confirmed Secure Areas
+
+- **🔐 Password Storage:** Bcrypt used to hash passwords (`userModel.js`)
+- **✅ Input Validation:** Rejects weak passwords, invalid email formats, and script injections
+- **🛡️ SQL Injection:** Resistant to payloads like `' OR 1=1`
+- **📵 Session Handling:** Sessions expire on browser close; unauthorized users redirected
+
+---
+
+## ⚠️ Identified Vulnerabilities
+
+| Risk Level | Issue                           | Impact                                                                 |
+|------------|----------------------------------|------------------------------------------------------------------------|
+| Medium     | Missing Anti-CSRF Token         | Susceptible to CSRF attacks on state-changing actions                 |
+| Medium     | No CSP Header                   | Vulnerable to XSS/data injection via external scripts                 |
+| Medium     | No Anti-Clickjacking Header     | Allows UI redress attacks (e.g., hidden iframes)                      |
+| Low        | Cookie Missing SameSite         | Cookies sent cross-site; CSRF risk                                    |
+| Low        | X-Powered-By Header Leak        | Server stack information exposed                                      |
+| Low        | Missing X-Content-Type-Options  | Risk of MIME-type sniffing                                            |
+
+---
+
+## 🔎 Informational Observations
+
+- Sensitive tokens appear in URLs (query strings)
+- Public endpoints like `/login`, `/logout` detected
+- Use of modern JS libraries may increase attack surface
+
+---
+
+## 🛠 Recommendations (Next Steps)
+
+1. **Implement CSRF Protection** for all state-changing requests
+2. **Set HTTP Security Headers:**
+   - `Content-Security-Policy`
+   - `X-Frame-Options`
+   - `X-Content-Type-Options: nosniff`
+   - `SameSite` attribute for cookies
+3. **Retest** application using OWASP ZAP to verify fixes
+
+---
+
+## 📁 Repository Structure
+
