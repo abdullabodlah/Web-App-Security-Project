@@ -1,0 +1,74 @@
+# Web Application Security Implementation - Week 2
+
+## 🔧 Project Overview
+
+This repository documents the Week 2 security implementation phase of the `AdminPanelSystem`, following the findings from the initial security assessment. The goal was to secure the application's core functionality by applying input validation, password hashing, session controls, and custom logging.
+
+---
+
+## 👤 Analyst
+
+- **Name:** Abdullah Shahid
+- **DHC ID:** 3617
+- **Project:** Web Application Security Internship
+- **Phase:** Week 2 – Secure Coding & Logging
+
+---
+
+## 🎯 Objective
+
+Enhance the security posture of the web application by:
+
+- Addressing insecure coding practices from Week 1
+- Validating and sanitizing all user inputs
+- Implementing secure password hashing
+- Ensuring proper session management
+- Adding centralized logging for authentication events
+
+---
+
+## 🛠️ Key Security Measures Implemented
+
+| Component        | Description                                                                 |
+|------------------|-----------------------------------------------------------------------------|
+| ✅ Input Validation | All user inputs sanitized using `validator` package                       |
+| 🔐 Password Security | Passwords hashed securely using `bcrypt`                                 |
+| 🧠 Session Handling  | Session created only after successful login                              |
+| 📝 Logging System   | Custom logging using `fs` and `path`; records both success and failure   |
+| 🧪 Manual Testing   | Verified login/registration workflows with valid/invalid data             |
+
+---
+
+## 🧪 Manual Test Results
+
+| Action                                | Result                                      |
+|---------------------------------------|---------------------------------------------|
+| Login with valid credentials          | Session created, redirected to home         |
+| Login with invalid credentials        | Access denied, log entry created            |
+| Register with valid data              | Data stored, log entry created              |
+| Attempt invalid input (XSS, script)   | Input rejected during validation            |
+
+---
+
+## 📁 Modified/Created Files
+
+| File                   | Purpose                                                |
+|------------------------|--------------------------------------------------------|
+| `router.js`            | Core logic: login, registration, session, logging      |
+| `logs/logger.js`       | Custom logger module using `fs`                        |
+| `logs/auth.log`        | Authentication logs storage file                       |
+| `views/*.ejs`          | Updated login/register forms with validation feedback  |
+
+---
+
+## ⚙️ Tech Stack & Tools
+
+- **Backend:** Node.js, Express.js
+- **Templating:** EJS
+- **Security Libraries:** `bcrypt`, `validator`
+- **File I/O:** Node.js `fs` and `path`
+
+---
+
+## 📦 Project Structure
+
